@@ -1,0 +1,78 @@
+---
+const images = [
+  { src: "/gallery/pablo.png", speed: "8s", delay: "0s", initialX: "30%", initialY: "30%" },
+  { src: "/gallery/coke.png", speed: "9s", delay: "1s", initialX: "70%", initialY: "30%" },
+  { src: "/gallery/cocaine.png", speed: "7s", delay: "0.5s", initialX: "50%", initialY: "30%" },
+  { src: "/gallery/scarface2.gif", speed: "8.5s", delay: "1.5s", initialX: "30%", initialY: "50%" },
+  { src: "/gallery/steven.png", speed: "7.5s", delay: "1.2s", initialX: "70%", initialY: "50%" },
+  { src: "/gallery/robert.png", speed: "8.2s", delay: "0.8s", initialX: "50%", initialY: "50%" },
+  { src: "/gallery/kevin.png", speed: "9.2s", delay: "0.3s", initialX: "30%", initialY: "70%" },
+  { src: "/gallery/wolf.png", speed: "7.8s", delay: "1.8s", initialX: "70%", initialY: "70%" },
+  { src: "/gallery/coco.png", speed: "8.8s", delay: "1.4s", initialX: "50%", initialY: "70%" },
+  { src: "/gallery/angelina.png", speed: "7.2s", delay: "0.7s", initialX: "50%", initialY: "40%" },
+];
+---
+
+<div class="relative w-full h-screen overflow-hidden bg-[#d72d0e]">
+  {images.map((img, index) => (
+    <div 
+      class="absolute h-40 w-40 md:h-56 md:w-56"
+      style={`
+        left: ${img.initialX}; 
+        top: ${img.initialY};
+        transform: translate(-50%, -50%);
+        animation: float-${index} ${img.speed} infinite ease-in-out;
+        animation-delay: ${img.delay};
+      `}
+    >
+      <img 
+        src={img.src} 
+        alt={`Character ${index + 1}`}
+        class="w-full h-full object-contain hover:scale-110 transition-transform duration-300"
+      />
+    </div>
+  ))}
+</div>
+
+<style>
+  @keyframes float-0 { 
+    0%, 100% { transform: translate(-250%, -250%) rotate(15deg); } 
+    50% { transform: translate(150%, 150%) rotate(-15deg); } 
+  }
+  @keyframes float-1 { 
+    0%, 100% { transform: translate(150%, -250%) rotate(-20deg); } 
+    50% { transform: translate(-250%, 150%) rotate(20deg); } 
+  }
+  @keyframes float-2 { 
+    0%, 100% { transform: translate(-250%, 0%) rotate(25deg); } 
+    50% { transform: translate(150%, 0%) rotate(-25deg); } 
+  }
+  @keyframes float-3 { 
+    0%, 100% { transform: translate(150%, -250%) rotate(-15deg); } 
+    50% { transform: translate(-250%, 150%) rotate(15deg); } 
+  }
+  @keyframes float-4 { 
+    0%, 100% { transform: translate(-250%, 150%) rotate(20deg); } 
+    50% { transform: translate(150%, -250%) rotate(-20deg); } 
+  }
+  @keyframes float-5 { 
+    0%, 100% { transform: translate(150%, 150%) rotate(-25deg); } 
+    50% { transform: translate(-250%, -250%) rotate(25deg); } 
+  }
+  @keyframes float-6 { 
+    0%, 100% { transform: translate(0%, 150%) rotate(15deg); } 
+    50% { transform: translate(0%, -250%) rotate(-15deg); } 
+  }
+  @keyframes float-7 { 
+    0%, 100% { transform: translate(-250%, 0%) rotate(-20deg); } 
+    50% { transform: translate(150%, 0%) rotate(20deg); } 
+  }
+  @keyframes float-8 { 
+    0%, 100% { transform: translate(150%, 0%) rotate(25deg); } 
+    50% { transform: translate(-250%, 0%) rotate(-25deg); } 
+  }
+  @keyframes float-9 { 
+    0%, 100% { transform: translate(0%, -250%) rotate(-15deg); } 
+    50% { transform: translate(0%, 150%) rotate(15deg); } 
+  }
+</style>

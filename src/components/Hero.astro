@@ -1,0 +1,60 @@
+---
+import { CA } from '../utils/utils';
+
+---
+
+<section class="rounded-[50px] w-full max-w-7xl mx-auto flex flex-col pt-20">
+
+
+  <div class='w-full flex flex-col items-center p-4 lg:p-0'>
+    <h3 class="text-white text-xl sm:text-2xl font-bold mb-2">CONTRACT ADDRESS</h3>
+
+    <div class="w-full max-w-3xl p-2 sm:p-3 bg-white flex justify-between items-center text-sm sm:text-base">
+      <div class="bg-black p-1 sm:p-2 text-white rounded-lg">
+        $ZOOMIE
+      </div> 
+      <div class="text-black px-2 text-center flex-1 overflow-hidden text-ellipsis">{CA}</div>
+      <button class="copy-button bg-[#ba3917] text-white p-1 sm:p-2 rounded-lg transition-all hover:bg-[#b52409]" data-address={CA}>
+        Copy Address
+      </button>
+    </div>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="fixed bottom-4 left-1/2 transform -translate-x-1/2 bg-black/80 text-white px-4 py-2 rounded-lg opacity-0 transition-opacity duration-300 pointer-events-none">
+      Address copied to clipboard!
+    </div>
+
+    <!-- <p class="text-white/40 text-center text-xs max-w-5xl my-4">$BULL Meme is intended to function as an expression of support for, and engagement with, the ideals and beliefs embodied by the symbol "$BULL" and the associated artwork, and are not intended to be, or to be the subject of, an investment opportunity, investment contract, or security of any type. redbullmeme.fun is not associated with any energy drink company or brand and has nothing to do with any commercial product or company.</p> -->
+  </div>
+
+
+
+<script>
+const copyButton = document.querySelector('.copy-button');
+const toast = document.getElementById('toast');
+let timeoutId;
+
+copyButton?.addEventListener('click', async () => {
+const address = copyButton.getAttribute('data-address');
+
+try {
+await navigator.clipboard.writeText(address);
+
+// Show toast
+toast.style.opacity = '1';
+
+// Clear existing timeout if any
+if (timeoutId) clearTimeout(timeoutId);
+
+// Hide toast after 2 seconds
+timeoutId = setTimeout(() => {
+  toast.style.opacity = '0';
+}, 2000);
+
+} catch (err) {
+console.error('Failed to copy:', err);
+}
+});
+</script>
+
+</section>

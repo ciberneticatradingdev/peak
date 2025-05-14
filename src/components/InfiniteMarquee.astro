@@ -1,0 +1,87 @@
+---
+---
+
+<div class="simple-marquee">
+  <div class="simple-marquee-content">
+    <img src="/zoomie/zoomie-coin.png" alt="Zoomie Coin" />
+    <span>THE DOG HAS ENERGY</span>
+    <img src="/zoomie/zoomie-coin.png" alt="Zoomie Coin" />
+    <span>THE DOG HAS ENERGY</span>
+    <img src="/zoomie/zoomie-coin.png" alt="Zoomie Coin" />
+    <span>THE DOG HAS ENERGY</span>
+    <img src="/zoomie/zoomie-coin.png" alt="Zoomie Coin" />
+    <span>THE DOG HAS ENERGY</span>
+    <img src="/zoomie/zoomie-coin.png" alt="Zoomie Coin" />
+    <span>THE DOG HAS ENERGY</span>
+    <img src="/zoomie/zoomie-coin.png" alt="Zoomie Coin" />
+    <span>THE DOG HAS ENERGY</span>
+    <img src="/zoomie/zoomie-coin.png" alt="Zoomie Coin" />
+    <span>THE DOG HAS ENERGY</span>
+    <img src="/zoomie/zoomie-coin.png" alt="Zoomie Coin" />
+    <span>THE DOG HAS ENERGY</span>
+  </div>
+</div>
+
+<style>
+  .simple-marquee {
+    width: 100%;
+    background: #ba7f21;
+    padding: 8px 0;
+    overflow: hidden;
+    white-space: nowrap;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2), 0 -4px 15px rgba(0, 0, 0, 0.2);
+    z-index: 10;
+  }
+
+  .simple-marquee-content {
+    display: inline-block;
+    white-space: nowrap;
+    padding-right: 0;
+    animation: marquee 30s linear infinite;
+  }
+
+  .simple-marquee-content img {
+    display: inline-block;
+    height: 30px;
+    width: 30px;
+    vertical-align: middle;
+    margin: 0 7px;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+  }
+
+  .simple-marquee-content span {
+    display: inline-block;
+    color: white;
+    font-weight: 800;
+    font-size: 16px;
+    margin: 0 7px;
+    vertical-align: middle;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+  }
+
+  @keyframes marquee {
+    0% {
+      transform: translateX(100%);
+    }
+    100% {
+      transform: translateX(-100%);
+    }
+  }
+
+  @media (max-width: 768px) {
+    .simple-marquee {
+      padding: 6px 0;
+    }
+    
+    .simple-marquee-content img {
+      height: 25px;
+      width: 25px;
+      margin: 0 5px;
+    }
+    
+    .simple-marquee-content span {
+      font-size: 14px;
+      margin: 0 5px;
+    }
+  }
+</style>

@@ -1,0 +1,28 @@
+---
+import {CA, tg, x} from "../utils/utils";
+---
+
+<footer class="w-full flex justify-center items-center relative overflow-hidden">
+    <div class="w-full">
+        <!-- Imagen de fondo que cubre todo el ancho -->
+        <div class="relative">
+            <!-- Versión mobile/tablet (centrada) -->
+            <div class="block md:hidden w-full flex justify-center">
+                <img 
+                    src="/footer2.png" 
+                    alt="Zoomie Footer" 
+                    class="w-full"
+                >
+            </div>
+            
+            <!-- Versión desktop (ancho completo) -->
+            <div class="hidden md:block w-full">
+                <img 
+                    src="/footer2.png" 
+                    alt="Zoomie Footer" 
+                    class="w-full h-[450px] object-cover"
+                >
+            </div>
+        </div>
+    </div>
+</footer>

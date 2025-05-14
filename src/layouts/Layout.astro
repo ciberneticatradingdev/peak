@@ -1,0 +1,182 @@
+---
+interface Props {
+	title: string;
+	description: string;
+	keywords: string;
+	canonicalURL: string;
+	robots: string;
+}
+
+const { title, description, keywords, canonicalURL, robots } = Astro.props;
+
+// COMPONENTS
+import Nav from "../components/Nav.astro";
+import Footer from "../components/Footer.astro";
+import DirectGameModal from "../components/DirectGameModal.astro";
+
+// Determinar si estamos en la página de inicio
+const isHomePage = Astro.url.pathname === "/";
+---
+
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<!-- FAVICON -->
+		<link rel="icon" type="image/png" href="/redbull-icon.png" />
+		<!-- THEME COLOR -->
+		<meta name="theme-color" content="#800080" />
+		<style>
+			@keyframes fadeInOut {
+				0%, 100% { opacity: 0.2; transform: translateY(10px); }
+				50% { opacity: 0.8; transform: translateY(0); }
+			}
+			.fade-in-out {
+				animation: fadeInOut 4s ease-in-out infinite;
+			}
+		</style>
+		<!-- GENERIC METADATA -->
+		<meta name="author" content="alexiamidgarx" />
+		<meta name="generator" content={Astro.generator} />
+		<meta name="description" content={description} />
+		<meta name="keywords" content={keywords} />
+		<!-- CANONICAL URL -->
+		<link rel="canonical" href={canonicalURL} />
+		<!-- ROBOTS -->
+		<meta name="robots" content={robots} />
+		<!-- OPENGRAPH TAGS (SOCIAL MEDIA) -->
+		<meta property="og:type" content="website" />
+		<meta property="og:title" content={title} />
+		<meta property="og:description" content={description} />
+		<meta property="og:url" content={canonicalURL} />
+		<meta property="og:image" content={`${canonicalURL}/zoomie-socials-banner.png`} />
+		<meta property="og:image:width" content="1200" />
+		<meta property="og:image:height" content="630" />
+		<meta property="og:image:secure_url" content={`${canonicalURL}/zoomie-socials-banner.png`} />
+		<meta property="og:image:alt" content="Zoomie Meme Token Banner" />
+		<!-- TWITTER/X CARD DATA -->
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta name="twitter:title" content={title} />
+		<meta name="twitter:description" content={description} />
+		<meta name="twitter:image" content={`${canonicalURL}/zoomie-socials-banner.png`} />
+		<!-- ADDITIONAL SOCIAL MEDIA TAGS -->
+		<meta property="og:site_name" content="$ZOOMIE" />
+		<meta name="twitter:site" content="$ZOOMIE" />
+		<meta name="twitter:creator" content="$ZOOMIE" />
+		<!-- GOOGLE MATERIAL ICONS -->
+		<link
+			href="https://fonts.googleapis.com/icon?family=Material+Icons"
+			rel="stylesheet"
+		/>
+		<!-- TITLE -->
+		<title>{title}</title>
+	</head>
+	<body class="bg-[#e5b73d]">
+		<!-- NAVIGATION BAR -->
+		<!-- <Nav /> -->
+		<slot />
+		<!-- SITE FOOTER -->
+		<!-- GAME INVITATION MODAL -->
+
+		<script>
+			document.addEventListener('DOMContentLoaded', () => {
+				// Verificar si estamos en la página de inicio
+				const isHomePage = window.location.pathname === '/' || window.location.pathname === '/index' || window.location.pathname === '/index.html';
+				
+				// Función para manejar el scroll a cualquier sección
+				function handleSmoothScroll(e, hash) {
+					e.preventDefault();
+					const isMobile = window.innerWidth < 1024;
+
+					// Mapa de selectores específicos para diferentes secciones
+					const sectionSelectors = {
+						'#ca': isMobile ? '.lg\\:hidden #ca' : '.hidden.lg\\:flex #ca',
+						'#community': '#community',
+						'#roadmap': '#roadmap',
+						'#faq': '#faq'
+					};
+
+					const selector = sectionSelectors[hash];
+					if (!selector) return;
+
+					const targetElement = document.querySelector(selector);
+					if (targetElement) {
+						setTimeout(() => {
+							targetElement.scrollIntoView({ behavior: 'smooth' });
+						}, 100);
+					}
+				}
+
+				// Manejar todos los enlaces internos
+				document.querySelectorAll('a[href^="#"]').forEach(link => {
+					link.addEventListener('click', (e) => {
+						const hash = link.getAttribute('href');
+						if (hash && hash !== '#') {
+							handleSmoothScroll(e, hash);
+						}
+					});
+				});
+
+				// Manejar enlaces que comienzan con /# (redirecciones desde otras páginas)
+				if (isHomePage) {
+					document.querySelectorAll('a[href^="/#"]').forEach(link => {
+						link.addEventListener('click', (e) => {
+							e.preventDefault();
+							const hash = link.getAttribute('href').substring(1); // Quitar el / inicial
+							if (hash && hash !== '#') {
+								handleSmoothScroll(e, hash);
+								// Actualizar la URL sin recargar la página
+								window.history.pushState(null, '', hash);
+							}
+						});
+					});
+				}
+
+				// Manejar el evento cuando se carga la página con un hash
+				if (window.location.hash) {
+					handleSmoothScroll(new Event('load'), window.location.hash);
+				}
+
+				// Manejar cambios de tamaño de ventana
+				let resizeTimeout;
+				window.addEventListener('resize', () => {
+					clearTimeout(resizeTimeout);
+					resizeTimeout = setTimeout(() => {
+						if (window.location.hash) {
+							handleSmoothScroll(new Event('resize'), window.location.hash);
+						}
+					}, 250);
+				});
+			});
+		</script>
+
+		<style is:global>
+			/* GOOGLE FONTS */
+			@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap');
+
+			html {
+				font-family: "Open Sans", sans-serif;
+				@apply text-slate-900;
+				@apply bg-cover;
+			}
+
+			h1 {
+				@apply text-5xl tracking-tight font-black text-purple-900; 
+			}
+
+			p, a {
+				@apply text-lg;
+			}
+
+			li {
+				@apply font-semibold;
+			}
+
+			a {
+				@apply text-sky-500 font-medium hover:underline underline-offset-4 break-words;
+			}
+
+		</style>
+	</body>
+</html>

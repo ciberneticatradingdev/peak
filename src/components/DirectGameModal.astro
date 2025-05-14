@@ -1,0 +1,152 @@
+---
+// Modal directo con JavaScript puro para garantizar que aparezca
+---
+
+<script is:inline>
+  // Crear y mostrar el modal después de que la página cargue completamente
+  window.addEventListener('load', function() {
+    console.log('modal loading');
+    
+    // No mostrar en la página del juego
+    if (window.location.pathname === '/game') {
+      console.log('error');
+      return;
+    }
+    
+    // Verificar si ya se mostró el modal en esta sesión (comentado para pruebas)
+    // const modalShown = sessionStorage.getItem('gameModalShown');
+    // if (modalShown) {
+    //   console.log('Modal ya mostrado en esta sesión');
+    //   return;
+    // }
+    
+    // Crear el modal directamente con JavaScript
+    setTimeout(function() {
+      createAndShowModal();
+    }, 2000);
+    
+    function createAndShowModal() {
+      console.log('...');
+      
+      // Crear el contenedor principal
+      const modalContainer = document.createElement('div');
+      modalContainer.id = 'directGameModal';
+      modalContainer.style.position = 'fixed';
+      modalContainer.style.top = '0';
+      modalContainer.style.left = '0';
+      modalContainer.style.right = '0';
+      modalContainer.style.bottom = '0';
+      modalContainer.style.backgroundColor = 'rgba(0, 0, 0, 0.8)';
+      modalContainer.style.backdropFilter = 'blur(5px)';
+      modalContainer.style.display = 'flex';
+      modalContainer.style.alignItems = 'center';
+      modalContainer.style.justifyContent = 'center';
+      modalContainer.style.zIndex = '9999';
+      
+      // Crear el contenido del modal
+      const modalContent = document.createElement('div');
+      modalContent.style.width = '90%';
+      modalContent.style.maxWidth = '400px';
+      modalContent.style.backgroundColor = '#0000ce';
+      modalContent.style.borderRadius = '16px';
+      modalContent.style.border = 'none';
+      modalContent.style.boxShadow = '0 0 30px rgba(0,0,0,0.8)';
+      modalContent.style.padding = '24px';
+      modalContent.style.position = 'relative';
+      
+      // Crear el botón de cerrar
+      const closeButton = document.createElement('button');
+      closeButton.innerHTML = '&times;';
+      closeButton.style.position = 'absolute';
+      closeButton.style.top = '10px';
+      closeButton.style.right = '10px';
+      closeButton.style.backgroundColor = 'transparent';
+      closeButton.style.border = 'none';
+      closeButton.style.color = 'white';
+      closeButton.style.fontSize = '24px';
+      closeButton.style.cursor = 'pointer';
+      closeButton.onclick = function() {
+        document.body.removeChild(modalContainer);
+        // Marcar como mostrado
+        sessionStorage.setItem('gameModalShown', 'true');
+      };
+      
+      // Crear el título
+      const title = document.createElement('h2');
+      title.textContent = 'Play Flappy $BULL!';
+      title.style.fontSize = '24px';
+      title.style.fontWeight = 'bold';
+      title.style.color = 'white';
+      title.style.textAlign = 'center';
+      title.style.marginBottom = '16px';
+      
+      // Crear el contenedor de la imagen
+      const imageContainer = document.createElement('div');
+      imageContainer.style.display = 'flex';
+      imageContainer.style.justifyContent = 'center';
+      imageContainer.style.marginBottom = '16px';
+      
+      // Crear la imagen
+      const image = document.createElement('img');
+      image.src = '/game/flappy-bull.png';
+      image.alt = 'Flappy Bull';
+      image.style.width = '150px';
+      image.style.height = '150px';
+      image.style.objectFit = 'contain';
+      
+      // Crear el texto
+      const text = document.createElement('p');
+      text.innerHTML = 'Do you have what it takes to master <span style="font-weight: bold; color: #d72d0e;">Flappy $BULL</span>?<br>Show your energy and skills!';
+      text.style.color = 'white';
+      text.style.fontSize = '18px';
+      text.style.textAlign = 'center';
+      text.style.marginBottom = '24px';
+      
+      // Crear el contenedor del botón
+      const buttonContainer = document.createElement('div');
+      buttonContainer.style.display = 'flex';
+      buttonContainer.style.justifyContent = 'center';
+      
+      // Crear el botón de jugar
+      const playButton = document.createElement('a');
+      playButton.href = '/game';
+      playButton.textContent = 'Play Now!';
+      playButton.style.backgroundColor = 'white';
+      playButton.style.color = '#0000ce';
+      playButton.style.padding = '12px 24px';
+      playButton.style.borderRadius = '9999px';
+      playButton.style.fontWeight = 'bold';
+      playButton.style.textDecoration = 'none';
+      playButton.style.textAlign = 'center';
+      playButton.style.display = 'inline-block';
+      playButton.style.transition = 'all 0.3s ease';
+      
+      // Efecto hover para el botón
+      playButton.onmouseover = function() {
+        playButton.style.transform = 'scale(1.05)';
+        playButton.style.boxShadow = '0 4px 8px rgba(255, 255, 255, 0.2)';
+      };
+      playButton.onmouseout = function() {
+        playButton.style.transform = 'scale(1)';
+        playButton.style.boxShadow = 'none';
+      };
+      
+      // Ensamblar el modal
+      imageContainer.appendChild(image);
+      buttonContainer.appendChild(playButton);
+      
+      modalContent.appendChild(closeButton);
+      modalContent.appendChild(title);
+      modalContent.appendChild(imageContainer);
+      modalContent.appendChild(text);
+      modalContent.appendChild(buttonContainer);
+      
+      modalContainer.appendChild(modalContent);
+      
+      // Añadir el modal al body
+      document.body.appendChild(modalContainer);
+      
+      console.log('Modal directo creado y mostrado');
+    }
+  });
+</script>

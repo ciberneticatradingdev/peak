@@ -1,0 +1,148 @@
+---
+// Componente de modal para invitar a jugar Flappy Bull
+---
+
+<div id="gameModal" class="fixed inset-0 z-50 hidden items-center justify-center">
+  <div class="absolute inset-0 bg-black/70 backdrop-blur-sm"></div>
+  <div class="relative w-full max-w-md mx-auto bg-[#0000ce] rounded-3xl overflow-hidden shadow-2xl transform transition-all border-4 border-white fancy-border">
+    <!-- Cabecera con efecto de brillo -->
+    <div class="bg-gradient-to-r from-blue-600 via-purple-500 to-blue-600 p-1">
+      <div class="bg-[#0000ce] p-4 rounded-t-3xl">
+        <h2 class="text-3xl font-bold text-white text-center">¡Juega ahora!</h2>
+      </div>
+    </div>
+    
+    <!-- Contenido del modal -->
+    <div class="p-6 flex flex-col items-center">
+      <div class="relative">
+        <div class="absolute -inset-1 rounded-full bg-gradient-to-r from-red-500 via-yellow-500 to-red-500 opacity-75 blur-sm"></div>
+        <img 
+          src="/game/flappy-bull.png" 
+          alt="Flappy Bull" 
+          class="relative w-40 h-40 object-contain mb-4 animate-bounce"
+        />
+      </div>
+      <p class="text-white text-xl text-center mb-6">
+        ¿Tienes lo que hace falta para dominar <span class="font-bold text-[#d72d0e]">Flappy $BULL</span>?
+        <br>¡Demuestra tu energía y habilidad!
+      </p>
+      
+      <!-- Botones de acción -->
+      <div class="flex gap-4 w-full">
+        <button 
+          id="closeGameModal" 
+          class="w-1/2 py-3 bg-black/20 text-white rounded-full font-bold hover:bg-black/30 transition-colors transform hover:scale-105"
+        >
+          Más tarde
+        </button>
+        <a 
+          href="/game" 
+          class="w-1/2 py-3 bg-white text-[#0000ce] rounded-full font-bold text-center hover:bg-gray-100 transition-all hover:no-underline transform hover:scale-105 hover:shadow-lg hover:shadow-white/20"
+        >
+          ¡Jugar ahora!
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  // Función para mostrar el modal inmediatamente (para pruebas)
+  function showModalNow() {
+    console.log('Intentando mostrar el modal ahora...');
+    const modal = document.getElementById('gameModal');
+    if (modal) {
+      console.log('Modal encontrado, mostrando...');
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+    } else {
+      console.error('Modal no encontrado en el DOM');
+    }
+  }
+
+  // Función para configurar el cierre del modal
+  function setupCloseButton() {
+    const closeButton = document.getElementById('closeGameModal');
+    if (closeButton) {
+      closeButton.addEventListener('click', () => {
+        console.log('Botón de cierre clickeado');
+        const modal = document.getElementById('gameModal');
+        if (modal) {
+          modal.classList.add('hidden');
+          modal.classList.remove('flex');
+        }
+      });
+    } else {
+      console.error('Botón de cierre no encontrado');
+    }
+  }
+
+  // Inicialización cuando el DOM está listo
+  document.addEventListener('DOMContentLoaded', () => {
+    console.log('DOM cargado, inicializando modal...');
+    
+    // No mostrar en la página del juego
+    if (window.location.pathname === '/game') {
+      console.log('Estamos en la página del juego, no mostrando modal');
+      return;
+    }
+    
+    // Para pruebas: comentar esta sección para siempre mostrar el modal
+    // Verificar si ya se mostró el modal en esta sesión
+    // const modalShown = sessionStorage.getItem('gameModalShown');
+    // if (modalShown) {
+    //   console.log('Modal ya mostrado en esta sesión');
+    //   return;
+    // }
+    
+    // Configurar el botón de cierre
+    setupCloseButton();
+    
+    // Mostrar el modal después de 1 segundo (reducido para pruebas)
+    console.log('Programando mostrar el modal en 1 segundo...');
+    setTimeout(() => {
+      showModalNow();
+      // Marcar como mostrado en esta sesión
+      sessionStorage.setItem('gameModalShown', 'true');
+    }, 1000);
+  });
+
+  // Alternativa: también intentar después de que la ventana esté completamente cargada
+  window.addEventListener('load', () => {
+    console.log('Ventana completamente cargada');
+    if (window.location.pathname !== '/game' && !document.getElementById('gameModal').classList.contains('flex')) {
+      console.log('Intentando mostrar modal después de carga completa...');
+      setTimeout(showModalNow, 1500);
+    }
+  });
+</script>
+
+<style>
+  /* Animación de rebote suave */
+  @keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+  }
+  .animate-bounce {
+    animation: bounce 2s infinite ease-in-out;
+  }
+  
+  /* Borde con efecto fancy similar al del sitio */
+  .fancy-border {
+    box-shadow: 
+      0 0 0 2px #d72d0e,
+      0 0 15px rgba(255,255,255,0.3),
+      inset 0 0 15px rgba(255,255,255,0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  /* Efecto de entrada para el modal */
+  @keyframes modalEnter {
+    from { opacity: 0; transform: scale(0.9); }
+    to { opacity: 1; transform: scale(1); }
+  }
+  
+  #gameModal.flex > div:nth-child(2) {
+    animation: modalEnter 0.4s ease-out forwards;
+  }
+</style>
