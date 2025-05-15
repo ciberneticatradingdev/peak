@@ -48,16 +48,19 @@ const isHomePage = Astro.url.pathname === "/";
 		<meta property="og:title" content={title} />
 		<meta property="og:description" content={description} />
 		<meta property="og:url" content={canonicalURL} />
-		<meta property="og:image" content={`${canonicalURL}/seo/banner.png`} />
+		<meta property="og:image" content={`${canonicalURL}/banner.png`} />
 		<meta property="og:image:width" content="1200" />
 		<meta property="og:image:height" content="630" />
-		<meta property="og:image:secure_url" content={`${canonicalURL}/seo/banner.png`} />
+		<meta property="og:image:secure_url" content={`${canonicalURL}/banner.png`} />
 		<meta property="og:image:alt" content="Zoomie Meme Token Banner" />
+		<meta property="og:image:type" content="image/png" />
+		<!-- Etiquetas específicas para Telegram -->
+		<meta property="telegram:channel" content="@ZoomieOnSolPortal" />
 		<!-- TWITTER/X CARD DATA -->
 		<meta name="twitter:card" content="summary_large_image" />
 		<meta name="twitter:title" content={title} />
 		<meta name="twitter:description" content={description} />
-		<meta name="twitter:image" content={`${canonicalURL}/seo/banner.png`} />
+		<meta name="twitter:image" content={`${canonicalURL}/banner.png`} />
 		<!-- ADDITIONAL SOCIAL MEDIA TAGS -->
 		<meta property="og:site_name" content="$ZOOMIE" />
 		<meta name="twitter:site" content="$ZOOMIE" />
