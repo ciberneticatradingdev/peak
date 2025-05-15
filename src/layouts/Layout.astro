@@ -24,7 +24,7 @@ const isHomePage = Astro.url.pathname === "/";
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<!-- FAVICON -->
-		<link rel="icon" type="image/png" href="/redbull-icon.png" />
+		<link rel="icon" type="image/png" href="/seo/icon.png" />
 		<!-- THEME COLOR -->
 		<meta name="theme-color" content="#800080" />
 		<style>
@@ -36,7 +36,6 @@ const isHomePage = Astro.url.pathname === "/";
 				animation: fadeInOut 4s ease-in-out infinite;
 			}
 		</style>
-		<meta name="author" content="alexiamidgarx" />
 		<meta name="generator" content={Astro.generator} />
 		<meta name="description" content={description} />
 		<meta name="keywords" content={keywords} />
@@ -49,16 +48,16 @@ const isHomePage = Astro.url.pathname === "/";
 		<meta property="og:title" content={title} />
 		<meta property="og:description" content={description} />
 		<meta property="og:url" content={canonicalURL} />
-		<meta property="og:image" content={`${canonicalURL}/zoomie-socials-banner.png`} />
+		<meta property="og:image" content={`${canonicalURL}/seo/banner.png`} />
 		<meta property="og:image:width" content="1200" />
 		<meta property="og:image:height" content="630" />
-		<meta property="og:image:secure_url" content={`${canonicalURL}/zoomie-socials-banner.png`} />
+		<meta property="og:image:secure_url" content={`${canonicalURL}/seo/banner.png`} />
 		<meta property="og:image:alt" content="Zoomie Meme Token Banner" />
 		<!-- TWITTER/X CARD DATA -->
 		<meta name="twitter:card" content="summary_large_image" />
 		<meta name="twitter:title" content={title} />
 		<meta name="twitter:description" content={description} />
-		<meta name="twitter:image" content={`${canonicalURL}/zoomie-socials-banner.png`} />
+		<meta name="twitter:image" content={`${canonicalURL}/seo/banner.png`} />
 		<!-- ADDITIONAL SOCIAL MEDIA TAGS -->
 		<meta property="og:site_name" content="$ZOOMIE" />
 		<meta name="twitter:site" content="$ZOOMIE" />
