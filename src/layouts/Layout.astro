@@ -79,28 +79,41 @@ const isHomePage = Astro.url.pathname === "/";
 		<meta property="og:title" content={title} />
 		<meta property="og:description" content={description} />
 		<meta property="og:url" content={canonicalURL} />
-		<meta property="og:image" content={`${canonicalURL}/banner.png?v=1`} />
-		<meta property="og:image:width" content="1600" />
-		<meta property="og:image:height" content="900" />
-		<meta property="og:image:alt" content="squishy" />
+		<meta property="og:image" content={`${canonicalURL}/seo/banner.png`} />
+		<meta property="og:image:secure_url" content={`${canonicalURL}/seo/banner.png`} />
+		<meta property="og:image:width" content="1200" />
+		<meta property="og:image:height" content="630" />
+		<meta property="og:image:alt" content="Squishy - The Bonk Squirrel Memecoin" />
 		<meta property="og:image:type" content="image/png" />
-		<meta property="og:site_name" content="$squishy" />
+		<meta property="og:site_name" content="Squishy" />
+		<meta property="og:locale" content="en_US" />
 		
 		<!-- TWITTER/X CARD DATA -->
 		<meta name="twitter:card" content="summary_large_image" />
-		<meta name="twitter:site" content="squishy" />
-		<meta name="twitter:creator" content="squishy" />
+		<meta name="twitter:site" content="@squishy" />
+		<meta name="twitter:creator" content="@squishy" />
 		<meta name="twitter:title" content={title} />
 		<meta name="twitter:description" content={description} />
-		<meta name="twitter:image" content={`${canonicalURL}/banner.png?v=1`} />
-		<meta name="twitter:image:alt" content="squishy" />
+		<meta name="twitter:image" content={`${canonicalURL}/seo/banner.png`} />
+		<meta name="twitter:image:alt" content="Squishy - The Bonk Squirrel Memecoin" />
 		
 		<!-- TELEGRAM SPECIFIC -->
 		<meta property="telegram:channel" content="@ZoomieOnSolPortal" />
-		<!-- ADDITIONAL SOCIAL MEDIA TAGS -->
-		<meta property="og:site_name" content="squishy" />
-		<meta name="twitter:site" content="squishy" />
-		<meta name="twitter:creator" content="squishy" />
+		<meta name="telegram:image" content={`${canonicalURL}/seo/banner.png`} />
+		
+		<!-- WHATSAPP AND MESSAGING APPS -->
+		<meta property="og:image:url" content={`${canonicalURL}/seo/banner.png`} />
+		<meta property="og:updated_time" content={new Date().toISOString()} />
+		
+		<!-- ADDITIONAL META TAGS FOR BETTER SHARING -->
+		<meta name="theme-color" content="#eab308" />
+		<meta name="msapplication-TileColor" content="#eab308" />
+		<meta name="msapplication-TileImage" content="/seo/icon.png" />
+		
+		<!-- FORCE REFRESH FOR SOCIAL MEDIA CRAWLERS -->
+		<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+		<meta http-equiv="Pragma" content="no-cache" />
+		<meta http-equiv="Expires" content="0" />
 		<!-- GOOGLE FONTS AND MATERIAL ICONS -->
 		<link
 			href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap"
