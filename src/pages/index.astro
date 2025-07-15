@@ -1,126 +1,32 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import Carrusel from "../components/believers/carrusel/CarruselIndex.astro";
-import Hero from "../components/Hero.astro";
-import NewHero from "../components/NewHero.astro";
-import InfiniteMarquee from "../components/InfiniteMarquee.astro";
-import Faq from "../components/Faq.astro";
-import NewFooter from "../components/NewFooter.astro";
-import { CA, x, tg } from "../utils/utils";
+
+import NewHero2 from "../components/NewHero2.astro";
+
 
 ---
 
 <Layout
-	title="ZOOMIE - $ZOOMIE"
-	description="Meet the amazing $ZOOMIE community - The dog with the most energy on Solana."
-	keywords="$ZOOMIE, Zoomie, solana memecoin, crypto, dog token, energy"
-	canonicalURL="https://zoomie-murex.vercel.app/"
+	title="Squishy - $SQUISHY"
+	description=""
+	keywords=""
+	canonicalURL="https://squishy.fun/"
 	robots="index, follow"
 >
-  <NewHero/>
-  <Carrusel/>
+
+  <NewHero2/>
+  <!-- <Carrusel/> -->
+
+
+
   <!-- <InfiniteMarquee/> -->
-  <main class="min-h-screen flex flex-col items-center text-white py-8 px-1.5 relative overflow-hidden">
-    <Hero/>
-
-    <section class="flex w-full py-8 px-4 md:px-8 mt-8 justify-center rounded-[50px]" >
-      <div class="w-full max-w-7xl flex flex-col md:flex-row items-center bg-red- justify-center gap-4 md:gap-8">
-
-        <div class="w-full md:w-4/12 bg-black/10 rounded-2xl p-4 flex flex-col items-center justify-center">
-          <img src="/zoomie/zoomie-world.png" alt="Zoomie Community" class="w-6/12 max-h-[400px] object-contain">
-          <text class="text-white font-semibold text-2xl text-center mt-4">Global Movement</text>
-          <p class="text-white text-center font-light text-xl mt-2">We're building an energetic community of believers who share our passion for innovation, sports, and pushing boundaries.</p>
-        </div>
-
-        <div class="w-full md:w-4/12 bg-black/10 rounded-2xl p-4 flex flex-col items-center justify-center">
-          <img src="/zoomie/zoomie-support.png" alt="24/7 Support" class="w-6/12 max-h-[400px] object-contain">
-          <text class="text-white font-semibold text-2xl text-center mt-4">24/7 support</text>
-          <p class="text-white text-center font-light text-xl mt-2">Our Telegram Chat is always open, just like the endless energy that Zoomie has! Join us anytime and let the dog energy flow!</p>
-        </div>
-
-        <div class="w-full md:w-4/12 bg-black/10 rounded-2xl p-4 flex flex-col items-center justify-center">
-          <img src="/zoomie/zoomie-community.png" alt="Zoomie Community" class="w-6/12 max-h-[400px] object-contain">
-          <text class="text-white font-semibold text-2xl text-center mt-4">Community Power</text>
-          <p class="text-white text-center font-light text-xl mt-2">Join a worldwide community of $ZOOMIE holders who believe in the power of energy and innovation in the crypto space.</p>
-        </div>
-
-      </div>
-    </section>
-
-    <section id="community" class="bg-black/10 rounded-2xl w-full max-w-7xl mx-auto  flex flex-col z-20 mb-12">
-
-        <div class="w-full flex flex-col md:flex-row overflow-hidden">
-    
-          <div class="w-full md:w-6/12 flex flex-col p-8 gap-4 justify-center">
-            <h1 class="font-black text-4xl sm:text-6xl md:text-7xl tracking-wider text-white leading-none">$ZOOMIE COMMUNITY<br/>
-            </h1>         
-            <img src="/zoomie.jpeg" alt="Zoomie Community" class="w-full h-full object-cover rounded-2xl mt-4">
-          </div>
-    
-          <div id="scrollContent" class="w-full md:w-6/12 flex flex-col gap-8 p-8">
-            <text class="text-white font-light text-2xl">Join the $ZOOMIE community and be part of the next big memecoin on Solana. We're all about representing the energy and excitement that only the most energetic dog on Solana can bring.</text>
-            <a href={tg} class="bg-black/10 text-white font-bold py-4 px-6 rounded-[25px] flex items-center justify-center gap-2 transition-all duration-300 transform hover:scale-105 hover:no-underline">
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 16 16">
-                <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.287 5.906c-.778.324-2.334.994-4.666 2.01-.378.15-.577.298-.595.442-.03.243.275.339.69.47l.175.055c.408.133.958.288 1.243.294.26.006.549-.1.868-.32 2.179-1.471 3.304-2.214 3.374-2.23.05-.012.12-.026.166.016.047.041.042.12.037.141-.03.129-1.227 1.241-1.846 1.817-.193.18-.33.307-.358.336a8.154 8.154 0 0 1-.188.186c-.38.366-.664.64.015 1.088.327.216.589.393.85.571.284.194.568.387.936.629.093.06.183.125.27.187.331.236.63.448.997.414.214-.02.435-.22.547-.82.265-1.417.786-4.486.906-5.751a1.426 1.426 0 0 0-.013-.315.337.337 0 0 0-.114-.217.526.526 0 0 0-.31-.093c-.3.005-.763.166-2.984 1.09z"/>
-              </svg>
-              Join our Telegram
-            </a>
-
-            <a href={x} class="bg-black/10  text-white font-bold py-4 px-6 rounded-[25px] flex items-center justify-center gap-2 transition-all duration-300 transform hover:scale-105 hover:no-underline">
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 16 16">
-                <path d="M12.6.75h2.454l-5.36 6.142L16 15.25h-4.937l-3.867-5.07-4.425 5.07H.316l5.733-6.57L0 .75h5.063l3.495 4.633L12.601.75Zm-.86 13.028h1.36L4.323 2.145H2.865l8.875 11.633Z"/>
-              </svg>
-              Follow on X
-            </a>
-          </div>
-    
-        </div>
-    
-      </section>
-
-
-      <!-- <h1 id="roadmap" class="font-bold text-4xl sm:text-5xl tracking-tight text-white text-center mt-8 mb-4"><span class="text-[#]">ROADMAP</span></h1>
-
-
-      <section  class="flex w-full max-w-7xl bg-black/10 py-8 px-4 md:px-8  justify-center rounded-[50px] mx-auto" >
-        <div class="w-full max-w-7xl flex flex-col md:flex-row items-center gap-8">
-          <div class="w-full md:w-6/12 order-2 md:order-1 px-4 md:px-0">
-            <h1 class="font-black text-3xl tracking-wider text-white text-center md:text-left">BUILD THE FOUNDATION</h1>
-            <text class="text-white font-light text-xl block mt-4">Our first phase focuses on building a strong foundation with community engagement, strategic partnerships, and establishing our presence in the memecoin space.</text>
-            <text class="text-white font-light text-xl block mt-4">Launch $BULL token directly on Raydium with our energetic community backing. Just like RedBull gives you wings, we're giving crypto enthusiasts a new way to soar in the digital space.</text>
-          </div>
-          <img src="/redbull-battery.gif" alt="RedBull Energy" class="w-full md:w-6/12 max-h-[400px] object-contain order-1 md:order-2">
-        </div>
-      </section>
-
-      <section class="flex w-full max-w-7xl bg-black/10 py-8 px-4 md:px-8 mt-8 justify-center rounded-[50px] mx-auto" >
-        <div class="w-full max-w-7xl flex flex-col md:flex-row items-center gap-8">
-          <img src="/redbull-jump.gif" alt="RedBull Jump" class="w-full md:w-6/12 max-h-[400px] object-contain">
-          <div class="w-full md:w-6/12 px-4 md:px-0">
-            <h1 class="font-black text-3xl tracking-wider text-white text-center md:text-left">ENJOY THE RIDE</h1>
-            <text class="text-white font-light text-xl block mt-4">Expand our reach through strategic marketing campaigns and community-driven initiatives. We're bringing the same energy and excitement that RedBull is known for to the crypto world.</text>
-            <text class="text-white font-light text-xl block mt-4">Get ready for high-energy events, exclusive NFT drops, and exciting community rewards that will take $BULL to new heights!</text>
-          </div>
-        </div>
-      </section>
-
-      <section class="flex w-full max-w-7xl bg-black/10 py-8 px-4 md:px-8 mt-8 justify-center rounded-[50px] mx-auto" >
-        <div class="w-full max-w-7xl flex flex-col md:flex-row items-center gap-8">
-          <div class="w-full md:w-6/12 order-2 md:order-1 px-4 md:px-0">
-            <h1 class="font-black text-3xl tracking-wider text-white text-center md:text-left">GET KNOWN AS THE OFFICIAL REDBULL MEME</h1>
-            <text class="text-white font-light text-xl block mt-4">$BULL is more than just a memecoin - it's a movement inspired by the world's leading energy drink brand. We're bringing that same spirit of innovation and excitement to the blockchain.</text>
-            <text class="text-white font-light text-xl block mt-4">Join us as we create history in the crypto space. With $BULL, the sky's not the limit - it's just the beginning!</text>
-          </div>
-          <img src="/redbullrocket.gif" alt="RedBull Rocket" class="w-full md:w-6/12 max-h-[400px] object-contain order-1 md:order-2">
-        </div>
-      </section> -->
-
-
-      <Faq />
-    
-  </main>
-  <Carrusel/>
-  <NewFooter />
+  <!-- <main class="min-h-screen flex flex-col items-center text-white py-8 px-1.5 relative overflow-hidden bg-gradient-to-b from-yellow-300 to-yellow-500"> -->
+    <!-- <Hero/> -->
+    <!-- <RebelGuineaPig/> -->
+    <!-- <Nft/> -->
+  <!-- </main> -->
+  <!-- <Carrusel/> -->
 
 <style>
   ul {

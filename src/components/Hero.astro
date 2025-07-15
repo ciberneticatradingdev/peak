@@ -6,17 +6,37 @@ import { CA } from '../utils/utils';
 <section class="rounded-[50px] w-full max-w-7xl mx-auto flex flex-col pt-20">
 
 
-  <div class='w-full flex flex-col items-center p-4 lg:p-0'>
-    <h3 class="text-white text-xl sm:text-2xl font-bold mb-2">CONTRACT ADDRESS</h3>
+  <div class='w-full flex flex-col items-center p-4 desktop:p-0'>
+    <h3 class="text-white text-xl sm:text-2xl font-bold mb-2 ca-title text-[85px]/[85px] sm:text-[135px]/[140px] text-center mb-10">CONTRACT ADDRESS</h3>
 
-    <div class="w-full max-w-3xl p-2 sm:p-3 bg-white flex justify-between items-center text-sm sm:text-base">
-      <div class="bg-black p-1 sm:p-2 text-white rounded-lg">
-        $ZOOMIE
-      </div> 
-      <div class="text-black px-2 text-center flex-1 overflow-hidden text-ellipsis">{CA}</div>
-      <button class="copy-button bg-[#ba3917] text-white p-1 sm:p-2 rounded-lg transition-all hover:bg-[#b52409]" data-address={CA}>
+    <div class="w-full max-w-2xl p-2 sm:p-3 bg-white flex justify-between items-center text-sm sm:text-base border-4 border-black rounded-lg">
+
+      <div class="text-xs sm:text-lg text-black px-2 text-center  overflow-hidden text-ellipsis">{CA}</div>
+      <button class="copy-button text-white bg-[#c03e32] p-1 sm:p-2 rounded-lg transition-all hover:scale-105" data-address={CA}>
         Copy Address
       </button>
+    </div>
+
+    <div class="w-full my-10 flex flex-wrap gap-4 justify-around">
+
+      <button class="w-full fingy-title2 max-w-xl bg-white hover:scale-105 text-black font-bold text-5xl  px-8 py-4 rounded-lg border-4 border-black shadow-lg transform transition-all duration-200 active:scale-95">
+        X
+      </button>
+
+      <button class="w-full fingy-title2 max-w-xl bg-white hover:scale-105 text-black font-bold text-5xl  px-8 py-4 rounded-lg border-4 border-black shadow-lg transform transition-all duration-200 active:scale-95">
+        TELEGRAM
+      </button>
+
+      <button class="w-full fingy-title2 max-w-xl bg-white hover:scale-105 text-black font-bold text-5xl  px-8 py-4 rounded-lg border-4 border-black shadow-lg transform transition-all duration-200 active:scale-95">
+        DEXSCREENER
+      </button>
+
+      <button class="w-full fingy-title2 max-w-xl bg-white hover:scale-105 text-black font-bold text-5xl  px-8 py-4 rounded-lg border-4 border-black shadow-lg transform transition-all duration-200 active:scale-95">
+        PUMPFUN
+      </button>
+
+
+
     </div>
 
     <!-- Toast Notification -->
@@ -57,4 +77,41 @@ console.error('Failed to copy:', err);
 });
 </script>
 
+<style>
+  .fingy-title {
+    font-family: 'Amiger Cartoon', sans-serif;
+    color: white;
+    letter-spacing: 0.3px;
+    -webkit-text-stroke-width: 2.5px;
+    -webkit-text-stroke-color: black;
+    text-shadow: 4px 4px #000;
+    font-size: 135px;
+    font-weight: 500;
+    line-height: 140px;
+    margin-top: 0;
+  }
+
+  .fingy-title2 {
+    font-family: 'Amiger Cartoon', sans-serif;
+    color: white;
+    letter-spacing: 0.3px;
+    -webkit-text-stroke-width: 2.5px;
+    -webkit-text-stroke-color: black;
+    text-shadow: 3px 3px #000;
+    font-weight: 500;
+    margin-top: 0;
+  }
+
+  .ca-title {
+    font-family: 'Amiger Cartoon', sans-serif;
+    color: white;
+    letter-spacing: 0.3px;
+    -webkit-text-stroke-width: 2.5px;
+    -webkit-text-stroke-color: black;
+    text-shadow: 4px 4px #000;
+    font-weight: 500;
+    margin-top: 0;
+  }
+
+</style>
 </section>

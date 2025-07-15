@@ -2,7 +2,12 @@
 export default {
 	content: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}'],
 	theme: {
-		extend: {},
+		extend: {
+			screens: {
+				'ipad-pro': '1024px', // iPad Pro específico
+				'desktop': '1280px', // Desktop real
+			},
+		},
 	},
 	plugins: [],
 }

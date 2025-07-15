@@ -1,0 +1,195 @@
+---
+---
+
+<section id="hero" class="w-full min-h-screen bg-gradient-to-b from-yellow-500 to-yellow-300 flex flex-col overflow-hidden relative">
+
+    <!-- Navigation Bar -->
+  <nav class="w-full px-6 py-4 flex items-center justify-between z-20 absolute top-0 left-0">
+    <!-- Logo/Brand -->
+    <div class="fingy-title2 hidden desktop:flex text-white text-2xl desktop:text-3xl font-bold">
+      THE BONK SQUIRREL
+    </div>
+    
+    <!-- Navigation Links -->
+    <div class="hidden desktop:flex items-center space-x-8">
+      <a href="#" class="font-semibold nav-link text-white text-lg border border-transparent hover:border-white p-2 rounded-lg transition-colors duration-200 hover:no-underline">
+        CONTRACT ADDRESS
+      </a>
+      <a href="#" class="font-semibold nav-link text-white text-lg border border-transparent hover:border-white p-2 rounded-lg transition-colors duration-200 hover:no-underline">
+        ABOUT
+      </a>
+      <a href="#" class="font-semibold nav-link text-white text-lg border border-transparent hover:border-white p-2 rounded-lg transition-colors duration-200 hover:no-underline">
+        TWITTER
+      </a>
+      <a href="#" class="font-semibold nav-link text-white text-lg border border-transparent hover:border-white p-2 rounded-lg transition-colors duration-200 hover:no-underline">
+        TELEGRAM
+      </a>
+      <a href="#" class="font-semibold nav-link text-white text-lg border border-transparent hover:border-white p-2 rounded-lg transition-colors duration-200 hover:no-underline">
+        DEXSCREENER
+      </a>
+    </div>
+    
+    <!-- CTA Button -->
+    <button class="hidden desktop:flex bg-white hover:bg-gray-100 text-black font-bold text-sm desktop:text-base px-4 desktop:px-6 py-2 desktop:py-3 rounded-lg border-2 border-black shadow-lg transform transition-all duration-200 hover:scale-105 active:scale-95">
+      BUY ON BONK
+    </button>
+    
+    <!-- Mobile Menu Button -->
+    <!-- <button class="desktop:hidden text-white text-2xl" id="mobile-menu-btn">
+      ☰
+    </button> -->
+  </nav>
+  
+  <!-- Mobile Menu (Hidden by default) -->
+  <div class="desktop:hidden hidden bg-sky-600/90 backdrop-blur-sm px-6 py-4 space-y-4 absolute top-16 left-0 w-full z-10" id="mobile-menu">
+    <a href="#" class="block text-white font-semibold text-lg hover:text-orange-200 transition-colors duration-200">
+      ABOUT
+    </a>
+
+    <a href="#" class="block text-white font-semibold text-lg hover:text-orange-200 transition-colors duration-200">
+      CHOMPNOMICS
+    </a>
+    <a href="#" class="block text-white font-semibold text-lg hover:text-orange-200 transition-colors duration-200">
+      ACTIVITIES
+    </a>
+    <a href="#" class="block text-white font-semibold text-lg hover:text-orange-200 transition-colors duration-200">
+      COMMUNITY
+    </a>
+    <a href="#" class="block text-white font-semibold text-lg hover:text-orange-200 transition-colors duration-200">
+      SHOP
+    </a>
+  </div>
+
+  
+  <!-- Main Content Container -->
+  <div class="main-content w-full max-w-8xl mx-auto px-4 flex flex-col desktop:flex-row items-center desktop:items-end justify-center desktop:justify-between gap-8 flex-1 pt-20 desktop:pt-0">
+
+    
+    
+
+
+    <!-- Left Side - Text Content -->
+    <div class="text-content flex-1 flex flex-col justify-center items-center text-center desktop:text-left z-10 desktop:self-center">
+      <!-- Main Title -->
+      <h1 class="fingy-title text-center text-6xl sm:text-7xl desktop:text-8xl xl:text-9xl font-bold mb-4 leading-none">
+        $SQUISHY
+      </h1>
+      
+      <!-- Subtitle -->
+      <p class="text-center text-xl sm:text-2xl desktop:text-xl text-[#161510] font-semibold mb-8 max-w-xl mx-auto desktop:mx-0">
+       Squishy the squirrel is a popular social media personality, specifically known for videos and photos showcasing his adorable antics. He's often depicted with a mischievous personality, enjoying snacks, and being generally endearing.
+      </p>
+      
+      <!-- CTA Button -->
+      <button class="w-5/6 bg-white hover:scale-105 text-black font-bold text-lg sm:text-xl px-8 py-4 rounded-lg border-4 border-black shadow-lg transform transition-all duration-200 active:scale-95">
+        BUY $SQUISHY
+      </button>
+    </div>
+    
+    <!-- Right Side - Character Image -->
+
+    <div class="flex-1 flex justify-center desktop:justify-end items-end h-full">
+      <div class="relative flex items-end ">
+        <img 
+          src="/logosquishy.png" 
+          alt="character" 
+          class="h-auto object-contain drop-shadow-2xl object-bottom"
+        >
+      </div>
+    </div>
+
+    
+  </div>
+  
+  <!-- Background Decorative Elements -->
+  <div class="absolute inset-0 overflow-hidden pointer-events-none">
+    <!-- Subtle pattern or additional styling can go here -->
+  </div>
+</section>
+
+<style>
+  @font-face {
+    font-family: 'Amiger Cartoon';
+    src: url('/font/Amiger Cartoon.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+  }
+  
+  .fingy-title {
+    font-family: 'Amiger Cartoon', sans-serif;
+    color: white;
+    letter-spacing: 0.3px;
+    -webkit-text-stroke-width: 2.5px;
+    -webkit-text-stroke-color: black;
+    text-shadow: 4px 4px #000;
+    font-size: 135px;
+    font-weight: 500;
+    line-height: 140px;
+    margin-top: 0;
+  }
+
+    .fingy-title2 {
+    font-family: 'Amiger Cartoon', sans-serif;
+    color: white;
+    letter-spacing: 0.3px;
+    -webkit-text-stroke-width: 1.5px;
+    -webkit-text-stroke-color: black;
+    text-shadow: 2px 2px #000;
+    font-weight: 500;
+    margin-top: 0;
+  }
+  
+  /* Mobile responsive adjustments */
+  @media (max-width: 768px) {
+    #hero {
+      min-height: 100vh;
+      padding-top: 2rem;
+    }
+    
+    .fingy-title {
+      font-size: 4rem;
+      line-height: 4.5rem;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .fingy-title {
+      font-size: 3rem;
+      line-height: 3.5rem;
+    }
+  }
+  
+  /* iPad Pro specific adjustments */
+  @media (min-width: 1024px) and (max-width: 1279px) {
+    #hero {
+      min-height: 100vh;
+      padding-top: 2rem;
+    }
+    
+    .fingy-title {
+      font-size: 5rem;
+      line-height: 5.5rem;
+      text-align: center;
+    }
+    
+    /* Force mobile-like layout on iPad Pro */
+    .main-content {
+      flex-direction: column !important;
+      align-items: center !important;
+      justify-content: center !important;
+      text-align: center !important;
+    }
+    
+    .text-content {
+      text-align: center !important;
+      align-items: center !important;
+    }
+    
+    .text-content p {
+      text-align: center !important;
+      margin-left: auto !important;
+      margin-right: auto !important;
+    }
+  }
+</style>
