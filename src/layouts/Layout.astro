@@ -9,10 +9,7 @@ interface Props {
 
 const { title, description, keywords, canonicalURL, robots } = Astro.props;
 
-// COMPONENTS
-import Nav from "../components/Nav.astro";
-import Footer from "../components/Footer.astro";
-import DirectGameModal from "../components/DirectGameModal.astro";
+
 
 // Determinar si estamos en la página de inicio
 const isHomePage = Astro.url.pathname === "/";
@@ -22,18 +19,52 @@ const isHomePage = Astro.url.pathname === "/";
 <html lang="en">
 	<head>
 		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+		<!-- DNS prefetch for external resources -->
+		<link rel="dns-prefetch" href="//fonts.googleapis.com" />
+		<link rel="dns-prefetch" href="//fonts.gstatic.com" />
 		<!-- FAVICON -->
 		<link rel="icon" type="image/png" href="/seo/icon.png" />
 		<!-- THEME COLOR -->
 		<meta name="theme-color" content="#800080" />
+		
+		<!-- PRELOAD CRITICAL RESOURCES -->
+		<!-- Preload main hero image -->
+		<link rel="preload" href="/logosquishy.png" as="image" type="image/png" />
+		<!-- Preload custom fonts -->
+		<link rel="preload" href="/font/Amiger Cartoon.ttf" as="font" type="font/ttf" crossorigin />
+		<!-- Preload SEO images -->
+		<link rel="preload" href="/seo/icon.png" as="image" type="image/png" />
+		<link rel="preload" href="/seo/banner.png" as="image" type="image/png" />
+		<!-- Preload Google Fonts -->
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link rel="preload" href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap" as="style" />
+		<link rel="preload" href="https://fonts.googleapis.com/icon?family=Material+Icons" as="style" />
 		<style>
+			/* Critical CSS for immediate rendering */
 			@keyframes fadeInOut {
 				0%, 100% { opacity: 0.2; transform: translateY(10px); }
 				50% { opacity: 0.8; transform: translateY(0); }
 			}
 			.fade-in-out {
 				animation: fadeInOut 4s ease-in-out infinite;
+			}
+			
+			/* Hero section critical styles */
+			#hero {
+				background: linear-gradient(to bottom, #eab308, #fde047);
+				min-height: 100vh;
+				display: flex;
+				flex-direction: column;
+				overflow: hidden;
+				position: relative;
+			}
+			
+			/* Prevent layout shift */
+			body {
+				margin: 0;
+				padding: 0;
 			}
 		</style>
 		<meta name="generator" content={Astro.generator} />
@@ -70,7 +101,11 @@ const isHomePage = Astro.url.pathname === "/";
 		<meta property="og:site_name" content="squishy" />
 		<meta name="twitter:site" content="squishy" />
 		<meta name="twitter:creator" content="squishy" />
-		<!-- GOOGLE MATERIAL ICONS -->
+		<!-- GOOGLE FONTS AND MATERIAL ICONS -->
+		<link
+			href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap"
+			rel="stylesheet"
+		/>
 		<link
 			href="https://fonts.googleapis.com/icon?family=Material+Icons"
 			rel="stylesheet"
@@ -158,8 +193,14 @@ const isHomePage = Astro.url.pathname === "/";
 		</script>
 
 		<style is:global>
-			/* GOOGLE FONTS */
-			@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap');
+			/* CUSTOM FONT DEFINITIONS */
+			@font-face {
+				font-family: 'Amiger Cartoon';
+				src: url('/font/Amiger Cartoon.ttf') format('truetype');
+				font-weight: normal;
+				font-style: normal;
+				font-display: swap;
+			}
 
 			html {
 				font-family: "Open Sans", sans-serif;
