@@ -10,7 +10,7 @@ export default function About() {
       content: (
         <div class="space-y-6">
           <div class="bg-gradient-to-r from-blue-900/50 to-blue-800/50 p-6 rounded-lg border border-blue-500/30">
-            <h3 class="text-2xl font-bold text-white mb-4">Welcome to memestockmarket.fun</h3>
+            <h3 class="text-2xl font-bold text-white mb-4">Welcome to meme-stock.fun</h3>
             <p class="text-gray-300 text-lg leading-relaxed">
               The world's first decentralized meme stock market where internet culture meets financial innovation. 
               Trade, invest, and profit from the most viral memes on the internet.
@@ -215,7 +215,7 @@ export default function About() {
         {/* Header */}
         <div class="text-center mb-12">
           <h1 class="text-4xl md:text-6xl font-bold text-white mb-4">
-            About <span class="text-green-400">memestockmarket.fun</span>
+            About <span class="text-green-400">meme-stock.fun</span>
           </h1>
           <p class="text-xl text-gray-300 max-w-3xl mx-auto">
             Where internet culture meets financial innovation. The future of meme trading is here.
