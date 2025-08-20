@@ -1,138 +1,612 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import Carrusel from "../components/believers/carrusel/CarruselIndex.astro";
-import Hero from "../components/Hero.astro";
-import NewHero2 from "../components/NewHero2.astro";
-import RebelGuineaPig from "../components/RebelGuineaPig.astro";
-
+import { CA, tg, x, xcommunity, dex, raydium } from "../utils/utils";
+import IntroScreen from "../components/IntroScreen.astro";
+import AuthButtons from "../components/auth/AuthButtons.tsx";
+import About from "../components/About.tsx";
+import Feed from "../components/Feed.tsx";
 ---
 
 <Layout
-	title=""
-	description=""
-	keywords=""
+	title="$mememarket - memestockmarket"
+	description="Welcome to the stock market for memes!"
+	keywords="mememarket, meme, stock market, cryptocurrency"
 	canonicalURL=""
 	robots="index, follow"
 >
+  <!-- Intro Screen Component -->
+  <IntroScreen />
 
-  <NewHero2/>
-  <Carrusel/>
+  <main class="min-h-screen flex flex-col items-center justify-between relative overflow-hidden bg-gradient-to-b from-blue-900 to-blue-700">
+    <!-- Background Video -->
+    <div class="fixed inset-0 z-0 overflow-hidden">
+      <video autoplay loop muted playsinline class="absolute inset-0 w-full h-full object-cover opacity-15">
+        <source src="/bg.MP4" type="video/mp4">
+      </video>
+    </div>
+    
+    <!-- Audio Player (Hidden) -->
+    <audio id="background-music" loop>
+      <source src="/tecno.mp3" type="audio/mp3">
+    </audio>
+    
+    <!-- Sound Toggle Button -->
+    <button id="sound-toggle" class="fixed top-4 right-4 z-40 bg-blue-600 hover:bg-blue-500 text-white p-2 rounded-full">
+      <svg xmlns="http://www.w3.org/2000/svg" id="sound-on-icon" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.536 8.464a5 5 0 010 7.072M17.95 6.05a8 8 0 010 11.9M6.5 8.5l4-4v15l-4-4H3a1 1 0 01-1-1v-5a1 1 0 011-1h3.5z" />
+      </svg>
+      <svg xmlns="http://www.w3.org/2000/svg" id="sound-off-icon" class="h-6 w-6 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z" />
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2" />
+      </svg>
+    </button>
+    
+    <!-- Header with Navigation -->
+    <header class="w-full bg-blue-800 text-white py-4 z-10 border-b border-blue-600">
+      <div class="container mx-auto flex justify-between items-center px-4">
+        <div class="flex items-center">
+          <h1 class="text-2xl font-bold text-white">memestockmarket<span class="text-green-400">.fun</span></h1>
+        </div>
+        <div>
+          <AuthButtons client:only="solid" />
+        </div>
+      </div>
+      
+      <!-- Navigation Menu -->
+      <nav class="container mx-auto mt-4 px-4">
+        <ul class="flex space-x-4 overflow-x-auto pb-2">
+          <li><a href="#" id="nav-home" class="nav-link text-white hover:text-blue-300 px-4 py-2 bg-blue-700 rounded">HOME</a></li>
+          <li><a href="#" id="nav-about" class="nav-link text-white hover:text-blue-300 px-4 py-2">ABOUT</a></li>
+          <li><a href="#" id="nav-feed" class="nav-link text-white hover:text-blue-300 px-4 py-2">FEED</a></li>
+        </ul>
+      </nav>
+    </header>
+    
+    <!-- Top Ticker -->
+    <div class="w-full bg-gradient-to-r from-blue-900 via-blue-800 to-blue-900 overflow-hidden py-2 border-b border-blue-600 z-10">
+      <div class="ticker-container">
+        <div class="ticker-content ticker-left">
+          <span class="ticker-item">LZI: <span class="text-green-400">5,299.10</span> <span class="text-green-400">▲ 0.37%</span></span>
+          <span class="ticker-item">DMI: <span class="text-green-400">442.42</span> <span class="text-green-400">▲ 1.57%</span></span>
+          <span class="ticker-item">GRB: <span class="text-green-400">12.12</span> <span class="text-green-400">▲ 0%</span></span>
+          <span class="ticker-item">STAB: <span class="text-green-400">106.06</span> <span class="text-green-400">▲ 0%</span></span>
+          <span class="ticker-item">CUTE: <span class="text-green-400">701.10</span> <span class="text-green-400">▲ 0%</span></span>
+          <span class="ticker-item">LZI: <span class="text-green-400">5,299.10</span> <span class="text-green-400">▲ 0.37%</span></span>
+          <span class="ticker-item">DMI: <span class="text-green-400">442.42</span> <span class="text-green-400">▲ 1.57%</span></span>
+          <span class="ticker-item">GRB: <span class="text-green-400">12.12</span> <span class="text-green-400">▲ 0%</span></span>
+          <span class="ticker-item">STAB: <span class="text-green-400">106.06</span> <span class="text-green-400">▲ 0%</span></span>
+          <span class="ticker-item">CUTE: <span class="text-green-400">701.10</span> <span class="text-green-400">▲ 0%</span></span>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Content Sections -->
+    <div id="content-container" class="flex-1 w-full z-10">
+      <!-- Home Section -->
+      <div id="home-section" class="content-section">
+        <!-- Welcome Message -->
+        <div class="container mx-auto px-4 py-4">
+          <h2 class="text-xl text-white">Welcome to the stock market for memes!</h2>
+          
+          <!-- Social Icons -->
+          <div class="flex space-x-4 mt-4">
+
+            <a href={x} class="bg-[#2463eb] p-2 rounded">
+              <img src="/social/x2.png" class="w-6 h-6">
+            </a>
+
+            <a href={xcommunity} class="bg-[#2463eb] p-2 rounded">
+              <img src="/social/community.png" class="w-6 h-6">
+            </a>
+
+            <a href={dex} class="bg-[#2463eb] p-2 rounded">
+              <img src="/social/dex.png" class="w-6 h-6">
+            </a>
 
 
+          </div>
+        </div>
+    
+        <!-- Main Title -->
+        <div class="text-center py-6">
+          <h1 class="text-5xl md:text-7xl font-bold text-white mb-2 glow-text">MEME STOCK MARKET</h1>
+          <h2 class="text-3xl md:text-4xl font-bold text-green-400 glow-text-green">$mememarket</h2>
+          <h2 class="text-3xl md:text-4xl font-bold text-green-400 glow-text-green">{CA}</h2>
 
-  <!-- <InfiniteMarquee/> -->
-  <main class="min-h-screen flex flex-col items-center text-white py-8 px-1.5 relative overflow-hidden bg-gradient-to-b from-sky-500 to-sky-500">
-    <Hero/>
-    <RebelGuineaPig/>
-    <!-- <Nft/> -->
+        </div>
+    
+        <!-- Meme Grid -->
+        <div class="container mx-auto px-4 py-8">
+          <div class="bg-blue-800 rounded-lg p-4 mb-6">
+            <h3 class="text-white text-xl mb-4">Recent Activity</h3>
+            <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-7 gap-4">
+              <a href="#" class="bg-blue-700 hover:bg-blue-600 text-white text-center py-2 rounded-lg">All</a>
+              <a href="#" class="bg-blue-700 hover:bg-blue-600 text-white text-center py-2 rounded-lg">Created Order</a>
+              <a href="#" class="bg-blue-700 hover:bg-blue-600 text-white text-center py-2 rounded-lg">Order Fulfilled</a>
+              <a href="#" class="bg-blue-700 hover:bg-blue-600 text-white text-center py-2 rounded-lg">Tokens Applied</a>
+              <a href="#" class="bg-blue-700 hover:bg-blue-600 text-white text-center py-2 rounded-lg">Meme Liked</a>
+              <a href="#" class="bg-blue-700 hover:bg-blue-600 text-white text-center py-2 rounded-lg">Meme Created</a>
+              <a href="#" class="bg-blue-700 hover:bg-blue-600 text-white text-center py-2 rounded-lg">New User</a>
+            </div>
+          </div>
+          
+          <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+            <!-- Meme Card 1 -->
+            <div class="bg-blue-800 rounded-lg overflow-hidden shadow-lg cursor-pointer meme-card" data-meme-id="1">
+              <div class="p-2 bg-blue-700">
+                <img src="/rarepepe.png" alt="Meme 1" class="w-full h-48 object-contain rounded" />
+              </div>
+              <div class="p-4">
+                <div class="flex justify-between items-center">
+                  <span class="text-white">Sold: 10 at $0.56</span>
+                  <div class="bg-green-600 rounded-full w-8 h-8 flex items-center justify-center">
+                    <svg class="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                      <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                    </svg>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <!-- Meme Card 2 -->
+            <div class="bg-blue-800 rounded-lg overflow-hidden shadow-lg cursor-pointer meme-card" data-meme-id="2">
+              <div class="p-2 bg-blue-700">
+                <img src="/maxitrades666.jpg" alt="Meme 2" class="w-full h-48 object-cover rounded" />
+              </div>
+              <div class="p-4">
+                <div class="flex justify-between items-center">
+                  <span class="text-white">Sold: 200 at $2.00</span>
+                  <div class="bg-green-600 rounded-full w-8 h-8 flex items-center justify-center">
+                    <svg class="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                      <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                    </svg>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <!-- Meme Card 3 -->
+            <div class="bg-blue-800 rounded-lg overflow-hidden shadow-lg cursor-pointer meme-card" data-meme-id="3">
+              <div class="p-2 bg-blue-700">
+                <img src="/bitmeme.png" alt="Meme 3" class="w-full h-48 object-cover rounded" />
+              </div>
+              <div class="p-4">
+                <div class="flex justify-between items-center">
+                  <span class="text-white">Sold: 2000 at $0.56</span>
+                  <div class="bg-red-600 rounded-full w-8 h-8 flex items-center justify-center">
+                    <svg class="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                      <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+                    </svg>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <!-- Meme Card 4 -->
+            <div class="bg-blue-800 rounded-lg overflow-hidden shadow-lg cursor-pointer meme-card" data-meme-id="4">
+              <div class="p-2 bg-blue-700">
+                <img src="/lockheed.png" alt="Meme 4" class="w-full h-48 object-cover rounded" />
+              </div>
+              <div class="p-4">
+                <div class="flex justify-between items-center">
+                  <span class="text-white">Sold: 10 at $0.56</span>
+                  <div class="bg-green-600 rounded-full w-8 h-8 flex items-center justify-center">
+                    <svg class="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                      <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                    </svg>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+    <!-- Content Sections -->
+    <div id="content-container" class="flex-1 w-full z-10">
+      <!-- Home Section -->
+      <div id="home-section" class="content-section">
+        <!-- This is the default visible content above -->
+      </div>
+      
+      <!-- About Section -->
+      <div id="about-section" class="content-section hidden">
+        <About client:only="solid" />
+      </div>
+      
+      <!-- Feed Section -->
+      <div id="feed-section" class="content-section hidden">
+        <Feed client:only="solid" />
+      </div>
+    </div>
+    </div>
+    
+    <!-- Bottom Ticker -->
+    <div class="w-full bg-gradient-to-r from-blue-900 via-blue-800 to-blue-900 overflow-hidden py-2 border-t border-blue-600 z-10 mt-auto">
+      <div class="ticker-container">
+        <div class="ticker-content ticker-right">
+          <span class="ticker-item">LZI: <span class="text-green-400">5,299.10</span> <span class="text-green-400">▲ 0.37%</span></span>
+          <span class="ticker-item">DMI: <span class="text-green-400">442.42</span> <span class="text-green-400">▲ 1.57%</span></span>
+          <span class="ticker-item">GRB: <span class="text-green-400">12.12</span> <span class="text-green-400">▲ 0%</span></span>
+          <span class="ticker-item">STAB: <span class="text-green-400">106.06</span> <span class="text-green-400">▲ 0%</span></span>
+          <span class="ticker-item">CUTE: <span class="text-green-400">701.10</span> <span class="text-green-400">▲ 0%</span></span>
+          <span class="ticker-item">LZI: <span class="text-green-400">5,299.10</span> <span class="text-green-400">▲ 0.37%</span></span>
+          <span class="ticker-item">DMI: <span class="text-green-400">442.42</span> <span class="text-green-400">▲ 1.57%</span></span>
+          <span class="ticker-item">GRB: <span class="text-green-400">12.12</span> <span class="text-green-400">▲ 0%</span></span>
+          <span class="ticker-item">STAB: <span class="text-green-400">106.06</span> <span class="text-green-400">▲ 0%</span></span>
+          <span class="ticker-item">CUTE: <span class="text-green-400">701.10</span> <span class="text-green-400">▲ 0%</span></span>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Footer -->
+    <footer class="w-full bg-blue-900 text-white py-4 text-center z-10 border-t border-blue-700">
+      <p>© 2025 memestockmarket.fun - The Meme Stock Market</p>
+      <p class="text-sm text-blue-400">See All Indexes</p>
+    </footer>
   </main>
-  <Carrusel/>
 
-<style>
-  ul {
-    list-style-type: none;
-    padding-left: 0;
-  }
-
-  li {
-    padding: 0.75rem 0;
-  }
-
-  .hero-image {
-    animation: slideUp 1s ease-out forwards;
-    transform: translateY(100%);
-  }
-
-  @keyframes slideUp {
-    to {
-      transform: translateY(0);
-    }
-  }
-
-  .fancy-frame {
-    border: 8px solid white;
-    border-radius: 12px;
-    box-shadow: 
-      0 0 0 2px #d72d0e,
-      0 0 15px rgba(0,0,0,0.3),
-      inset 0 0 15px rgba(0,0,0,0.3);
-    transition: transform 0.3s ease;
-  }
-
-  .fancy-frame:hover {
-    transform: scale(1.02);
-  }
-
-  .gradient-text {
-    background: linear-gradient(to right, #ffffff, #ffd700);
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-    text-shadow: 0 2px 10px rgba(255,255,255,0.2);
-  }
-</style>
-
-<style>
-    .scroll-container {
-      position: relative;
-      overflow: hidden;
-    }
-    
-    #scrollContent {
-      position: relative;
-      transition: transform 0.1s ease-out;
-    }
-</style>
-    
-<script>
-  document.addEventListener('DOMContentLoaded', () => {
-    const scrollContent = document.getElementById('scrollContent');
-    const container = scrollContent.parentElement;
-    let lastScrollY = window.scrollY;
-    let ticking = false;
-    let containerTop = container.offsetTop;
-    let containerBottom = containerTop + container.offsetHeight;
-    let maxScroll;
-
-    function updatePosition() {
-      if (window.innerWidth < 768) return;
+  <!-- Meme Detail Modal -->
+  <div id="meme-modal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">
+    <div class="bg-gradient-to-b from-blue-900 to-blue-700 rounded-lg p-6 max-w-2xl w-full mx-4 max-h-[90vh] overflow-y-auto">
+      <div class="flex justify-between items-center mb-4">
+        <h2 id="modal-title" class="text-2xl font-bold text-white">Meme Details</h2>
+        <button id="close-modal" class="text-white hover:text-gray-300 text-2xl">&times;</button>
+      </div>
       
-      if (!scrollContent) return;
-      
-      const scrollY = window.scrollY;
-      const windowHeight = window.innerHeight;
-      const contentHeight = scrollContent.offsetHeight;
-      maxScroll = contentHeight - windowHeight;
-
-      if (scrollY >= containerTop && scrollY <= containerBottom - windowHeight) {
-        const scrollPercent = (scrollY - containerTop) / (containerBottom - containerTop - windowHeight);
-        const translateY = Math.min(maxScroll * scrollPercent, maxScroll);
+      <div class="grid md:grid-cols-2 gap-6">
+        <!-- Meme Image -->
+        <div class="bg-blue-800 rounded-lg p-4">
+          <img id="modal-image" src="" alt="Meme" class="w-full h-64 object-contain rounded" />
+        </div>
         
-        scrollContent.style.transform = `translateY(${translateY}px)`;
+        <!-- Meme Info -->
+        <div class="space-y-4">
+          <div class="bg-blue-800/50 rounded-lg p-4">
+            <h3 class="text-lg font-semibold text-white mb-2">Trading Info</h3>
+            <div class="space-y-2 text-white">
+              <div class="flex justify-between">
+                <span>Current Price:</span>
+                <span id="modal-price" class="text-green-400 font-bold">$0.00</span>
+              </div>
+              <div class="flex justify-between">
+                <span>Volume (24h):</span>
+                <span id="modal-volume" class="text-blue-300">0</span>
+              </div>
+              <div class="flex justify-between">
+                <span>Market Cap:</span>
+                <span id="modal-market-cap" class="text-blue-300">$0</span>
+              </div>
+              <div class="flex justify-between">
+                <span>Status:</span>
+                <span id="modal-status" class="font-semibold">Active</span>
+              </div>
+            </div>
+          </div>
+          
+          <div class="bg-blue-800/50 rounded-lg p-4">
+            <h3 class="text-lg font-semibold text-white mb-2">Performance</h3>
+            <div class="space-y-2 text-white">
+              <div class="flex justify-between">
+                <span>24h Change:</span>
+                <span id="modal-change" class="font-bold">+0.00%</span>
+              </div>
+              <div class="flex justify-between">
+                <span>7d Change:</span>
+                <span id="modal-change-7d" class="font-bold">+0.00%</span>
+              </div>
+              <div class="flex justify-between">
+                <span>All Time High:</span>
+                <span id="modal-ath" class="text-blue-300">$0.00</span>
+              </div>
+            </div>
+          </div>
+          
+          <div class="bg-blue-800/50 rounded-lg p-4">
+            <h3 class="text-lg font-semibold text-white mb-2">Description</h3>
+            <p id="modal-description" class="text-gray-300 text-sm leading-relaxed">Loading description...</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="mt-6 flex gap-4">
+        <button class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-lg font-semibold transition-colors flex-1">
+          Buy Now
+        </button>
+        <button class="bg-gray-600 hover:bg-gray-700 text-white px-6 py-2 rounded-lg font-semibold transition-colors flex-1">
+          Add to Watchlist
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Meme data
+    const memeData = {
+      1: {
+        name: "Rare Pepe",
+        image: "/rarepepe.png",
+        price: "$0.56",
+        volume: "10",
+        marketCap: "$5,600",
+        status: "Active",
+        change24h: "+2.34%",
+        change7d: "+15.67%",
+        ath: "$0.89",
+        description: "The legendary Rare Pepe collection represents one of the earliest and most iconic meme cryptocurrencies. Known for its rarity and cultural significance in the crypto community."
+      },
+      2: {
+        name: "Maxi Trades 666",
+        image: "/maxitrades666.jpg",
+        price: "$2.00",
+        volume: "200",
+        marketCap: "$400,000",
+        status: "Active",
+        change24h: "+5.12%",
+        change7d: "+23.45%",
+        ath: "$3.50",
+        description: "Maxi Trades 666 is a high-volume trading meme that has gained significant traction among crypto maximalists. Features strong community support and active trading."
+      },
+      3: {
+        name: "BitMeme",
+        image: "/bitmeme.png",
+        price: "$0.56",
+        volume: "2000",
+        marketCap: "$1,120,000",
+        status: "Declining",
+        change24h: "-1.23%",
+        change7d: "-8.90%",
+        ath: "$1.25",
+        description: "BitMeme combines the power of Bitcoin culture with meme economics. Despite recent decline, it maintains a strong holder base and potential for recovery."
+      },
+      4: {
+        name: "Lockheed Meme",
+        image: "/lockheed.png",
+        price: "$0.56",
+        volume: "10",
+        marketCap: "$5,600",
+        status: "Active",
+        change24h: "+0.87%",
+        change7d: "+4.32%",
+        ath: "$0.78",
+        description: "Lockheed Meme represents the intersection of aerospace technology and meme culture. A niche but dedicated community drives its steady growth."
+      }
+    };
+
+    // Background music control
+    document.addEventListener('DOMContentLoaded', () => {
+      const music = document.getElementById('background-music');
+      const soundToggle = document.getElementById('sound-toggle');
+      const soundOnIcon = document.getElementById('sound-on-icon');
+      const soundOffIcon = document.getElementById('sound-off-icon');
+      
+      let musicPlaying = false;
+      
+      // Function to play music after user interaction
+      function playMusic() {
+        if (!musicPlaying && music instanceof HTMLAudioElement) {
+          music.play().then(() => {
+            musicPlaying = true;
+            soundOnIcon?.classList.remove('hidden');
+            soundOffIcon?.classList.add('hidden');
+          }).catch(error => {
+            console.error("Audio play failed:", error);
+          });
+        }
       }
       
-      lastScrollY = scrollY;
-      ticking = false;
+      // Toggle music on/off
+      soundToggle?.addEventListener('click', () => {
+        if (musicPlaying && music instanceof HTMLAudioElement) {
+          music.pause();
+          musicPlaying = false;
+          soundOnIcon?.classList.add('hidden');
+          soundOffIcon?.classList.remove('hidden');
+        } else {
+          playMusic();
+        }
+      });
+      
+      // Listen for the intro screen dismissed event
+      document.addEventListener('introScreenDismissed', () => {
+        // Music should already be playing from the intro button click
+        // Just update our state to reflect that
+        musicPlaying = true;
+        soundOnIcon?.classList.remove('hidden');
+        soundOffIcon?.classList.add('hidden');
+      });
+      
+      // Navigation functionality
+      const navLinks = document.querySelectorAll('.nav-link');
+      const contentSections = document.querySelectorAll('.content-section');
+      
+      navLinks.forEach(link => {
+        link.addEventListener('click', (e) => {
+          e.preventDefault();
+          
+          // Remove active class from all nav links
+          navLinks.forEach(nav => {
+            nav.classList.remove('bg-blue-700', 'rounded');
+          });
+          
+          // Add active class to clicked nav link
+          link.classList.add('bg-blue-700', 'rounded');
+          
+          // Hide all content sections
+          contentSections.forEach(section => {
+            section.classList.add('hidden');
+          });
+          
+          // Show the corresponding content section
+          const targetId = link.id.replace('nav-', '') + '-section';
+          const targetSection = document.getElementById(targetId);
+          if (targetSection) {
+            targetSection.classList.remove('hidden');
+          }
+        });
+      });
+      
+      // Meme card click functionality
+      const memeCards = document.querySelectorAll('.meme-card');
+      const modal = document.getElementById('meme-modal');
+      const closeModal = document.getElementById('close-modal');
+      
+      memeCards.forEach(card => {
+        card.addEventListener('click', () => {
+          const memeId = card.getAttribute('data-meme-id');
+          const meme = memeData[memeId];
+          
+          if (meme) {
+            // Update modal content
+            document.getElementById('modal-title').textContent = meme.name;
+            const modalImg = document.getElementById('modal-image');
+            if (modalImg instanceof HTMLImageElement) {
+              modalImg.src = meme.image;
+              modalImg.alt = meme.name;
+            }
+            document.getElementById('modal-price').textContent = meme.price;
+            document.getElementById('modal-volume').textContent = meme.volume;
+            document.getElementById('modal-market-cap').textContent = meme.marketCap;
+            document.getElementById('modal-status').textContent = meme.status;
+            document.getElementById('modal-change').textContent = meme.change24h;
+            document.getElementById('modal-change-7d').textContent = meme.change7d;
+            document.getElementById('modal-ath').textContent = meme.ath;
+            document.getElementById('modal-description').textContent = meme.description;
+            
+            // Update status color
+            const statusElement = document.getElementById('modal-status');
+            if (meme.status === 'Active') {
+              statusElement.className = 'font-semibold text-green-400';
+            } else if (meme.status === 'Declining') {
+              statusElement.className = 'font-semibold text-red-400';
+            } else {
+              statusElement.className = 'font-semibold text-yellow-400';
+            }
+            
+            // Update change colors
+            const change24Element = document.getElementById('modal-change');
+            const change7dElement = document.getElementById('modal-change-7d');
+            
+            if (meme.change24h.startsWith('+')) {
+              change24Element.className = 'font-bold text-green-400';
+            } else {
+              change24Element.className = 'font-bold text-red-400';
+            }
+            
+            if (meme.change7d.startsWith('+')) {
+              change7dElement.className = 'font-bold text-green-400';
+            } else {
+              change7dElement.className = 'font-bold text-red-400';
+            }
+            
+            // Show modal
+            modal.classList.remove('hidden');
+          }
+        });
+      });
+      
+      // Close modal functionality
+      closeModal.addEventListener('click', () => {
+        modal.classList.add('hidden');
+      });
+      
+      // Close modal when clicking outside
+      modal.addEventListener('click', (e) => {
+        if (e.target === modal) {
+          modal.classList.add('hidden');
+        }
+      });
+    });
+  </script>
+
+  <!-- Copy to clipboard functionality for contract address -->
+  <script>
+    function copyToClipboard(text) {
+      navigator.clipboard.writeText(text)
+        .then(() => {
+          showToast("Contract address copied!");
+        })
+        .catch(err => {
+          console.error('Failed to copy text: ', err);
+        });
     }
-
-    window.addEventListener('scroll', () => {
-      if (!ticking) {
-        window.requestAnimationFrame(updatePosition);
-        ticking = true;
+    
+    function showToast(message) {
+      const toast = document.getElementById('toast');
+      if (toast) {
+        toast.textContent = message;
+        toast.style.opacity = '1';
+        setTimeout(() => {
+          toast.style.opacity = '0';
+        }, 3000);
       }
-    });
+    }
+  </script>
 
-    window.addEventListener('resize', () => {
-      containerTop = container.offsetTop;
-      containerBottom = containerTop + container.offsetHeight;
-      
-      if (window.innerWidth < 768) {
-        scrollContent.style.transform = 'translateY(0)';
-      } else {
-        updatePosition();
+  <style>
+    /* Ticker animation */
+    .ticker-container {
+      width: 100%;
+      overflow: hidden;
+      white-space: nowrap;
+    }
+    
+    .ticker-content {
+      display: inline-block;
+      white-space: nowrap;
+      padding-left: 100%;
+      min-width: 200%;
+    }
+    
+    .ticker-item {
+      display: inline-block;
+      padding: 0 2rem;
+      font-family: 'Roboto Mono', monospace;
+      font-weight: bold;
+    }
+    
+    .ticker-left {
+      animation: ticker-left 20s linear infinite;
+    }
+    
+    .ticker-right {
+      animation: ticker-right 20s linear infinite;
+    }
+    
+    @keyframes ticker-left {
+      0% {
+        transform: translate3d(0, 0, 0);
       }
-    });
-
-    updatePosition();
-  });
-</script>
+      100% {
+        transform: translate3d(-100%, 0, 0);
+      }
+    }
+    
+    @keyframes ticker-right {
+      0% {
+        transform: translate3d(-100%, 0, 0);
+      }
+      100% {
+        transform: translate3d(0, 0, 0);
+      }
+    }
+    
+    /* Glow text effects */
+    .glow-text {
+      text-shadow: 0 0 10px rgba(255, 255, 255, 0.7), 0 0 20px rgba(255, 255, 255, 0.5);
+    }
+    
+    .glow-text-green {
+      text-shadow: 0 0 10px rgba(74, 222, 128, 0.7), 0 0 20px rgba(74, 222, 128, 0.5);
+    }
+    
+    /* Content sections */
+    .content-section {
+      min-height: 60vh;
+    }
+    
+    .hidden {
+      display: none !important;
+    }
+  </style>
+</Layout>
