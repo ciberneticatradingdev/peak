@@ -1,4 +1,4 @@
-export const CA = "CA WILL UPDATE SOON";
+export const CA = "5GY2KgXm5mXzyS2dgWX5T9EGkcaD62wzK8xzXyM8pump";
 export const x = 'https://x.com/i/communities/1958315387528819098';
 export const xcommunity = 'https://x.com/i/communities/1958315387528819098';
 export const tg = 'https://x.com/';
