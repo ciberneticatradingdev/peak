@@ -50,12 +50,14 @@ import { CA, tg, x, xcommunity, dex, raydium } from "../utils/utils";
             id="contract-address"
           />
           <button 
-            onclick="copyToClipboard()" 
+            id="copy-button"
             class="ml-2 bg-sky-400 hover:bg-sky-300 text-black px-3 py-1 rounded font-bold text-sm transition-colors duration-200"
           >
             Copy
           </button>
         </div>
+        <div id="copy-message" class="text-center text-green-400 opacity-0 transition-opacity duration-300 mt-2">Copied to clipboard!</div>
+
       </div>
 
       <!-- Social Links Section -->
@@ -80,7 +82,10 @@ import { CA, tg, x, xcommunity, dex, raydium } from "../utils/utils";
     document.addEventListener('DOMContentLoaded', function() {
       const introScreen = document.getElementById('intro-screen');
       const audio = document.getElementById('background-audio') as HTMLAudioElement;
-      
+      const copyButton = document.getElementById('copy-button');
+      const contractInput = document.getElementById('contract-address') as HTMLInputElement;
+      const copyMessage = document.getElementById('copy-message');
+
       // Handle click on intro screen
       introScreen.addEventListener('click', function() {
         // Hide intro screen
@@ -99,32 +104,30 @@ import { CA, tg, x, xcommunity, dex, raydium } from "../utils/utils";
           introScreen.click();
         }
       });
-    });
 
-    // Function to copy contract address to clipboard
-    function copyToClipboard() {
-      const contractInput = document.getElementById('contract-address') as HTMLInputElement;
-      const copyMessage = document.getElementById('copy-message');
-      
-      // Copy to clipboard
-      navigator.clipboard.writeText(contractInput.value).then(function() {
-        // Show success message
-        copyMessage.style.opacity = '1';
-        
-        // Hide message after 2 seconds
-        setTimeout(function() {
-          copyMessage.style.opacity = '0';
-        }, 2000);
-      }).catch(function(error) {
-        console.error('Failed to copy: ', error);
-        // Fallback for older browsers
-        contractInput.select();
-        document.execCommand('copy');
-        copyMessage.style.opacity = '1';
-        setTimeout(function() {
-          copyMessage.style.opacity = '0';
-        }, 2000);
+      // Function to copy contract address to clipboard
+      copyButton.addEventListener('click', () => {
+        if (!navigator.clipboard) {
+          // Fallback for browsers that don't support clipboard API
+          contractInput.select();
+          document.execCommand('copy');
+          copyMessage.style.opacity = '1';
+          setTimeout(() => {
+            copyMessage.style.opacity = '0';
+          }, 2000);
+          return;
+        }
+
+        navigator.clipboard.writeText(contractInput.value).then(() => {
+          copyMessage.style.opacity = '1';
+          setTimeout(() => {
+            copyMessage.style.opacity = '0';
+          }, 2000);
+        }).catch(err => {
+          console.error('Failed to copy text: ', err);
+          // Optional: Show an error message to the user
+        });
       });
-    }
+    });
   </script>
 </Layout>
