@@ -24,7 +24,7 @@ const obfuscationOptions = {
 };
 
 // Función para añadir código de auto-destrucción
-function addSelfDestructCode(code, domainWhitelist = ['localhost', 'zoomie.io']) {
+function addSelfDestructCode(code, domainWhitelist = ['localhost', 'peak.io']) {
   // Código que se auto-destruye si se ejecuta en un dominio no autorizado
   const selfDestructCode = `
     (function() {
